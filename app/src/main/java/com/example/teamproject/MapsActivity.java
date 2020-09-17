@@ -90,10 +90,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 
         // 새로운 위치 추가
-        LatLng suwonsmartapp = new LatLng(37.2741364, 127.02267740000002);
+        LatLng suwonsmartapp = new LatLng(37.221804, 127.186695);
         mMap.addMarker(new MarkerOptions()
                 .position(suwonsmartapp)
-                .title("수원스마트앱개발학원"));
+                .title("명지대"));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(suwonsmartapp));
 
