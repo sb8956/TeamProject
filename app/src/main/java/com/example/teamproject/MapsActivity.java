@@ -25,9 +25,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnPolylineClickListener,GoogleMap.OnPolygonClickListener {
 
     // 권한 체크 요청 코드 정의
     public static final int REQUEST_CODE_PERMISSIONS = 1000;
@@ -85,17 +88,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        // 서울 위치
+        LatLng seoul = new LatLng(37.566535, 126.97796919);
+        mMap.addMarker(new MarkerOptions().position(seoul).title("Marker in Seoul"));
 
-        // 새로운 위치 추가
-        LatLng suwonsmartapp = new LatLng(37.221804, 127.186695);
+        // 명지대 위치 추가
+        LatLng MJU = new LatLng(37.221804, 127.186695);
         mMap.addMarker(new MarkerOptions()
-                .position(suwonsmartapp)
+                .position(MJU)
                 .title("명지대"));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(suwonsmartapp));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MJU));
 
         // 카메라 줌
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
@@ -111,6 +114,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
+
+        Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
+                .clickable(true)
+                .add(   seoul,
+                        MJU
+                ) );
+        googleMap.setOnPolylineClickListener(this);
+        googleMap.setOnPolygonClickListener(this);
+    }
+
+    public double getDistance(LatLng LatLng1, LatLng LatLng2) {
+        double distance = 0;
+        Location locationA = new Location("A");
+        locationA.setLatitude(LatLng1.latitude);
+        locationA.setLongitude(LatLng1.longitude);
+        Location locationB = new Location("B");
+        locationB.setLatitude(LatLng2.latitude);
+        locationB.setLongitude(LatLng2.longitude);
+        distance = locationA.distanceTo(locationB);
+
+        return distance;
     }
 
     @Override
@@ -131,6 +155,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
     }
+
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -165,5 +190,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
+    }
+
+    @Override
+    public void onPolygonClick(Polygon polygon) {
+
+    }
+
+    @Override
+    public void onPolylineClick(Polyline polyline) {
+
     }
 }
