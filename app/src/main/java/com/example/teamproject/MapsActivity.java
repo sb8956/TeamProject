@@ -98,12 +98,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .position(MJU)
                 .title("명지대"));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(MJU));
+        //핀 연결 확인용 좌표 추가
+        LatLng MJU2 = new LatLng(37.220000, 127.186666);
+        mMap.addMarker(new MarkerOptions()
+                .position(MJU2)
+                .title("명지대2"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MJU2));
 
         // 카메라 줌
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
 
-        // 인포 윈도우 클릭시 전화 걸기
+        // 인포 윈도우 클릭시 전화 걸기 -> 뭔가 게시물 쓸때 쓸수있을거 같아서 남겨둠
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
@@ -114,16 +119,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
-
+        //좌표끼리 선 긋기 좌표가 추가 될때마다 새로운 선을 만들어야 하나.. 아니면 그냥 좌표하나씩 추가해야하나 고민
+        //일단 좌표에 들어온 순서로 선이 그어짐 -> 시간별로 추가할수 있도록 해야 함
         Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
                 .clickable(true)
                 .add(   seoul,
-                        MJU
+                        MJU,
+                        MJU2
                 ) );
         googleMap.setOnPolylineClickListener(this);
         googleMap.setOnPolygonClickListener(this);
     }
 
+    //두 좌표간 거리 구함 -> 어디다 쓰지? 아직 안씀
     public double getDistance(LatLng LatLng1, LatLng LatLng2) {
         double distance = 0;
         Location locationA = new Location("A");
