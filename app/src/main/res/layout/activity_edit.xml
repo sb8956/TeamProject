@@ -72,7 +72,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:stateListAnimator="@null"
-            android:text="Login"
+            android:text="save"
             android:textColor="#ffffff" />
 
     </RelativeLayout>
