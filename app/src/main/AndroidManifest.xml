@@ -11,7 +11,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -34,7 +34,7 @@
             android:value="AIzaSyCTtEC39s9JafYXxKz2pxjH5N0LsPZHRRY" />
 
         <activity
-            android:name=".Gridview"
+            android:name=".UploadActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

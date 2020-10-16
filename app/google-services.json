@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "457402460527",
+    "firebase_url": "https://teamproject-cec9e.firebaseio.com",
+    "project_id": "teamproject-cec9e",
+    "storage_bucket": "teamproject-cec9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457402460527:android:03b6ff4fcbf8ae5575a09a",
+        "android_client_info": {
+          "package_name": "com.example.teamproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457402460527-v2ql3auick9djilk08k2cbi5qki1r0ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAArkW7Dea6tm_Rh1OkxZgEVCnsWp08lbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457402460527-v2ql3auick9djilk08k2cbi5qki1r0ar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
