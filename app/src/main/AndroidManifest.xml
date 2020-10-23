@@ -34,7 +34,7 @@
             android:value="AIzaSyCTtEC39s9JafYXxKz2pxjH5N0LsPZHRRY" />
 
         <activity
-            android:name=".UploadActivity"
+            android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
