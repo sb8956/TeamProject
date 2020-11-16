@@ -1,25 +1,48 @@
+// Apply the Android Plugin
 apply plugin: 'com.android.application'
+
+// Apply the IMGLYPlugin
+apply plugin: 'ly.img.android.sdk'
+
+apply plugin: 'kotlin-android'
+
+// Configure the PESDKPlugin
 
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.example.teamproject"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion 18
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    flavorDimensions "default"
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    lintOptions {
+        abortOnError false
+    }
+    productFlavors {
+        activity {
+            buildConfigField("int","RequestMode", "1")
+        }
+        fragment {
+            buildConfigField("int","RequestMode", "2")
         }
     }
 }
@@ -27,7 +50,7 @@ android {
 apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin
 
 dependencies {
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:design:29.0.0'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -74,8 +97,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
 
     //toolbar
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:29.0.0'
+    implementation 'com.android.support:design:29.0.0'
+    implementation 'com.android.support:support-v4:29.0.0'
     implementation 'com.android.support:support-annotations:28.0.0'
+
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    implementation 'com.github.yalantis:ucrop:2.2.6-native'
+
+
 }
+
